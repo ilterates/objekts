@@ -10,7 +10,8 @@ var loader = new THREE.ImageLoader();
 var pic = $('#img');
 var collider = [];
 var mouse = new THREE.Vector2();
-var raycaster = new THREE.Raycaster();
+var intersection = new THREE.vector3(),
+  INTERSECTED, SELECTED;
 var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
 var geometry = new THREE.BoxGeometry( 0.5, 0.5, 0.5 );
 var material = new THREE.MeshBasicMaterial({
@@ -19,11 +20,32 @@ var material = new THREE.MeshBasicMaterial({
     wireframe: false
 
   });
+  // ADDING PLAYER
+  var player = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial() );
+  scene.add( player );
 
-// function mouseMove( e ) {
-//   mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-//   mouse.y = ( event.clientY / window.innerWidth ) * 2 + 1;
-// }
+  var plane = new THREE.Mesh(
+    new THREE.PlaneBufferGeometry ( 2000, 2000 , 8 , 8 ),
+    new THREE.MeshBasicMaterial( { color: 0x000000, opcacity: 0.25, transparent: true } )
+  );
+  plane.visible = false;
+
+  var raycaster = new THREE.Raycaster( camera.position, new THREE.Vector3( 0, 0, -1) );
+  window.addEventListener( 'resize', onWindowResize, false );
+  window.addEventListener( 'mousemove', onDocumentMouseMove, false);
+
+  //////////////////////
+
+  function onDocumentMouseMove( e ) {
+    e.preventDefault();
+      mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+      mouse.y = ( event.clientY / window.innerWidth ) * 2 + 1;
+
+
+  }
+
+
+
 
 var renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );

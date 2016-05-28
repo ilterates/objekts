@@ -47,24 +47,20 @@ var cube = new THREE.Mesh( geometry, material );
   // ADDING PLAYER
 player = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial( { color: 0xFFFFFF, wireframe: true } ) );
 scene.add( player );
-space.addEventListener('keydown' , playerMovement, false );
 
-  // Keyboard event
-function playerMovement ( event ) {
-
-}
 $( window ).keydown(function( e ) {
+  var playerSpeed = 0.5;
   if ( e.which == 38 ) {
-   player.position.y +=1;
-   console.log("arrow up fired");
+   player.position.y += playerSpeed;
+   console.log("up");
  } else if ( e.which == 37 ) {
-   player.position.x -=1;
-   console.log("left?");
+   player.position.x -= playerSpeed;
+   console.log("left");
  } else if ( e.which == 39 ) {
-   player.position.x += 1;
+   player.position.x += playerSpeed;
    console.log("right?");
  } else if ( e.which == 40 ) {
-   player.position.y -= 1;
+   player.position.y -= playerSpeed;
    console.log("down?");
  }
 });

@@ -5,14 +5,13 @@
 //= require three
 //= require_tree .
 
-var scene = new THREE.Scene();
+var scene;
 var loader = new THREE.ImageLoader();
 var pic = $('#img');
 var collider = [];
 var r = 20;
 var enemyCount = 50;
 var mouse = new THREE.Vector2();
-var camera = new THREE.PerspectiveCamera( 60, window.innerWidth/window.innerHeight, 0.1, 1000 );
 var geometry = new THREE.SphereGeometry( 0.2 );
 // ENEMY OBJECT
 var material = new THREE.MeshBasicMaterial({
@@ -28,6 +27,12 @@ var renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 var space = document.getElementById( "space" );
 space.appendChild( renderer.domElement );
+ // CAMERA
+var camera = new THREE.PerspectiveCamera( 60, window.innerWidth/window.innerHeight, 0.1, 1000 );
+camera.position.z = 10;
+scene = new THREE.Scene();
+
+// ENEMIES
 for (var i =0; i < enemyCount; i++) {
 var cube = new THREE.Mesh( geometry, material );
   cube.position.set( r/2 - r * Math.random(),
@@ -50,12 +55,11 @@ function playerMovement ( e ) {
   console.log('mouse move');
 }
 
-camera.position.z = 10;
 function animate() {
 	requestAnimationFrame( animate );
 
   for (var i = 0; i < collider.length; i++) {
-    if ( collider[i].position.y < -3 ) {
+    if ( collider[i].position.y < -5 ) {
       collider[i].position.y = 6;
     } else {
       collider[i].position.y -= 0.010;

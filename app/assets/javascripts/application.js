@@ -10,7 +10,7 @@ var loader = new THREE.ImageLoader();
 var pic = $('#img');
 var collider = [];
 var r = 20;
-var enemyCount = 50;
+var enemyCount = 30;
 var mouse = new THREE.Vector2();
 var geometry = new THREE.SphereGeometry( 0.2 );
 
@@ -47,21 +47,27 @@ var cube = new THREE.Mesh( geometry, material );
   // ADDING PLAYER
 player = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial( { color: 0xFFFFFF, wireframe: true } ) );
 scene.add( player );
-space.addEventListener('mousemove' , playerMovement, false );
+space.addEventListener('keydown' , playerMovement, false );
 
-  // MOUSE MOVEMENT EVENT
+  // Keyboard event
 function playerMovement ( event ) {
-  event.preventDefault();
-  mouse.x = ( ( event.clientX - window.offsetLeft ) / window.innerWidth ) * 2 - 1;
-  mouse.y = - ( ( event.clientY - window.offsetTop) / window.innerHeight ) * 2 + 1;
 
-  player.position.set( 275 * mouse.x, 275 * mouse.y, 0.0);
-  console.log('mouse move');
 }
-var directionalLight = new THREE.DirectionalLight( 0xffffff, 0.5 );
-directionalLight.position.set( 0, 1, 0 );
-scene.add( directionalLight );
-
+$( window ).keydown(function( e ) {
+  if ( e.which == 38 ) {
+   player.position.y +=1;
+   console.log("arrow up fired");
+ } else if ( e.which == 37 ) {
+   player.position.x -=1;
+   console.log("left?");
+ } else if ( e.which == 39 ) {
+   player.position.x += 1;
+   console.log("right?");
+ } else if ( e.which == 40 ) {
+   player.position.y -= 1;
+   console.log("down?");
+ }
+});
 
 function animate() {
 	requestAnimationFrame( animate );

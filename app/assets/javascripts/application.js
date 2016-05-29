@@ -58,14 +58,14 @@ $( window ).keydown(function( e ) {
    console.log("left");
  } else if ( e.which == 39 ) {
    player.position.x += playerSpeed;
-   console.log("right");
+   console.log("right?");
  } else if ( e.which == 40 ) {
    player.position.y -= playerSpeed;
-   console.log("down");
+   console.log("down?");
  }
  // if player leaves inner space, game will teleport player to center.
- if ( player.position.y == -6  ||
-      player.position.y ==  6  ||
+ if ( player.position.y == -6 ||
+      player.position.y ==  6 ||
       player.position.x == -11 ||
       player.position.x ==  11 ) {
         player.position.y = 0;
@@ -89,8 +89,6 @@ function animate() {
     }
 }
 	renderer.render(scene, camera);
-  if ( player.position == cube.position ) {
-    console.log("collision");
-  }
+  // positionChecker();
 }
 animate();

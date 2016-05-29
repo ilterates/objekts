@@ -9,10 +9,11 @@ var scene,player;
 var loader = new THREE.ImageLoader();
 var pic = $('#img');
 var collider = [];
-var r = 20;
+var range = 20;
+var radius = 0.5;
 var enemyCount = 30;
 var mouse = new THREE.Vector2();
-var geometry = new THREE.SphereGeometry( 0.2 );
+var geometry = new THREE.SphereGeometry( radius );
 
 
   // WebGLRenderer
@@ -37,8 +38,8 @@ var material = new THREE.MeshBasicMaterial({
   });
 for (var i =0; i < enemyCount; i++) {
 var cube = new THREE.Mesh( geometry, material );
-  cube.position.set( r/2 - r * Math.random(),
-                     r/2 - r * Math.random(),
+  cube.position.set( range /2 - range * Math.random(),
+                     range /2 - range * Math.random(),
                      0.0);
   scene.add( cube );
   collider.push(cube);
@@ -64,8 +65,8 @@ $( window ).keydown(function( e ) {
    console.log("down?");
  }
  // if player leaves inner space, game will teleport player to center.
- if ( player.position.y == -6 ||
-      player.position.y ==  6 ||
+ if ( player.position.y == -6  ||
+      player.position.y ==  6  ||
       player.position.x == -11 ||
       player.position.x ==  11 ) {
         player.position.y = 0;
@@ -86,9 +87,11 @@ function animate() {
       collider[i].rotation.x += 0.01;
       collider[i].rotation.y += 0.01;
       collider[i].rotation.z += 0.01;
+      if ( collider[i].position.distanceTo( player.position )  < 2 * radius ) {
+        console.log("collision");
+      }
     }
 }
 	renderer.render(scene, camera);
-  // positionChecker();
 }
 animate();

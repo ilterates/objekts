@@ -10,9 +10,11 @@ var loader = new THREE.ImageLoader();
 var pic = $('#img');
 var collider = [];
 var range = 20;
+var enemyRadius = 0.2;
 var radius = 0.5;
 var enemyCount = 30;
 var mouse = new THREE.Vector2();
+var enemyGeometry = new THREE.SphereGeometry( enemyRadius );
 var geometry = new THREE.SphereGeometry( radius );
 
 
@@ -37,12 +39,12 @@ var material = new THREE.MeshBasicMaterial({
 
   });
 for (var i =0; i < enemyCount; i++) {
-var cube = new THREE.Mesh( geometry, material );
-  cube.position.set( range /2 - range * Math.random(),
-                     range /2 - range * Math.random(),
+var enemy = new THREE.Mesh( enemyGeometry, material );
+  enemy.position.set( range / 2 - range * Math.random(),
+                     range / 2 - range * Math.random(),
                      0.0);
-  scene.add( cube );
-  collider.push(cube);
+  scene.add( enemy );
+  collider.push( enemy );
 }
 
   // ADDING PLAYER
@@ -83,7 +85,7 @@ function animate() {
     if ( collider[i].position.y < -5 ) {
       collider[i].position.y = 6;
     } else {
-      collider[i].position.y -= 0.010;
+      collider[i].position.y -= 0.030;
       collider[i].rotation.x += 0.01;
       collider[i].rotation.y += 0.01;
       collider[i].rotation.z += 0.01;

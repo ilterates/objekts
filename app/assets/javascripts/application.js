@@ -63,6 +63,16 @@ $( window ).keydown(function( e ) {
    player.position.y -= playerSpeed;
    console.log("down?");
  }
+ // if player leaves inner space, game will teleport player to center.
+ if ( player.position.y == -6 ||
+      player.position.y ==  6 ||
+      player.position.x == -11 ||
+      player.position.x ==  11 ) {
+        player.position.y = 0;
+        player.position.x = 0;
+        console.log("outside");
+      }
+
 });
 
 function animate() {
@@ -79,5 +89,6 @@ function animate() {
     }
 }
 	renderer.render(scene, camera);
+  // positionChecker();
 }
 animate();

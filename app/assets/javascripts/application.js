@@ -5,7 +5,7 @@
 //= require three
 //= require_tree .
 
-var scene,player;
+var scene,player,gem;
 var loader = new THREE.ImageLoader();
 var pic = $('#img');
 var collider = [];
@@ -51,6 +51,8 @@ var enemy = new THREE.Mesh( enemyGeometry, material );
 player = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial( { color: 0xFFFFFF, wireframe: true } ) );
 scene.add( player );
 
+gem = new THREE.Mesh ( geometry, new THREE.MeshBasicMaterial ( { color: 0x00ff00, wireframe: false } ) );
+scene.add ( gem );
 $( window ).keydown(function( e ) {
   var playerSpeed = 0.5;
   if ( e.which == 38 ) {

@@ -5,7 +5,7 @@
 //= require three
 //= require_tree .
 
-var scene,player,gem;
+var scene,player,gem,score;
 var loader = new THREE.ImageLoader();
 var pic = $('#img');
 var collider = [];
@@ -106,7 +106,7 @@ function animate() {
 	renderer.render(scene, camera);
   if ( gem.position.distanceTo( player.position ) < 2 * gemRadius ) {
     console.log("gem collision");
-    gon.score += 100;
+    score += 100;
     console.log(gon.score);
     gem.position.set( range / 2 - range * Math.random(),
                        range / 2 - range * Math.random(),

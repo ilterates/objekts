@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
   def index
-
+    gon.score = 0;
+    p gon.score
   end
 
   def show

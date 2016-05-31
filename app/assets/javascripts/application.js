@@ -20,6 +20,7 @@ var geometry = new THREE.SphereGeometry( radius );
 var gemGeometry = new THREE.SphereGeometry( gemRadius );
 
 
+
   // WebGLRenderer
 
 var renderer = new THREE.WebGLRenderer();
@@ -54,6 +55,9 @@ player = new THREE.Mesh( enemyGeometry, new THREE.MeshBasicMaterial( { color: 0x
 scene.add( player );
 
 gem = new THREE.Mesh ( gemGeometry, new THREE.MeshBasicMaterial ( { color: 0x00ff00, wireframe: false } ) );
+gem.position.set( range / 2 - range * Math.random(),
+                   range / 2 - range * Math.random(),
+                   0.0);
 scene.add ( gem );
 
 $( window ).keydown(function( e ) {
@@ -102,6 +106,11 @@ function animate() {
 	renderer.render(scene, camera);
   if ( gem.position.distanceTo( player.position ) < 2 * gemRadius ) {
     console.log("gem collision");
+    gon.score += 100;
+    console.log(gon.score);
+    gem.position.set( range / 2 - range * Math.random(),
+                       range / 2 - range * Math.random(),
+                       0.0);
   }
 }
 animate();

@@ -11,11 +11,13 @@ var pic = $('#img');
 var collider = [];
 var range = 20;
 var enemyRadius = 0.2;
+var gemRadius = 0.2;
 var radius = 0.5;
 var enemyCount = 30;
 var mouse = new THREE.Vector2();
 var enemyGeometry = new THREE.SphereGeometry( enemyRadius );
 var geometry = new THREE.SphereGeometry( radius );
+var gemGeometry = new THREE.SphereGeometry( gemRadius );
 
 
   // WebGLRenderer
@@ -48,11 +50,12 @@ var enemy = new THREE.Mesh( enemyGeometry, material );
 }
 
   // ADDING PLAYER
-player = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial( { color: 0xFFFFFF, wireframe: true } ) );
+player = new THREE.Mesh( enemyGeometry, new THREE.MeshBasicMaterial( { color: 0xFFFFFF, wireframe: true } ) );
 scene.add( player );
 
-gem = new THREE.Mesh ( geometry, new THREE.MeshBasicMaterial ( { color: 0x00ff00, wireframe: false } ) );
+gem = new THREE.Mesh ( gemGeometry, new THREE.MeshBasicMaterial ( { color: 0x00ff00, wireframe: false } ) );
 scene.add ( gem );
+
 $( window ).keydown(function( e ) {
   var playerSpeed = 0.5;
   if ( e.which == 38 ) {
@@ -91,11 +94,14 @@ function animate() {
       collider[i].rotation.x += 0.01;
       collider[i].rotation.y += 0.01;
       collider[i].rotation.z += 0.01;
-      if ( collider[i].position.distanceTo( player.position )  < 2 * radius ) {
+      if ( collider[i].position.distanceTo( player.position )  < 2 * enemyRadius ) {
         console.log("collision");
       }
     }
 }
 	renderer.render(scene, camera);
+  if ( gem.position.distanceTo( player.position ) < 2 * gemRadius ) {
+    console.log("gem collision");
+  }
 }
 animate();

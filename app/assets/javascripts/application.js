@@ -5,7 +5,8 @@
 //= require three
 //= require_tree .
 
-var scene,player,gem,score;
+var scene,player,gem;
+var score = 0;
 var loader = new THREE.ImageLoader();
 var pic = $('#img');
 var collider = [];
@@ -13,7 +14,7 @@ var range = 20;
 var enemyRadius = 0.2;
 var gemRadius = 0.2;
 var radius = 0.5;
-var enemyCount = 30;
+var enemyCount = 15;
 var mouse = new THREE.Vector2();
 var enemyGeometry = new THREE.SphereGeometry( enemyRadius );
 var geometry = new THREE.SphereGeometry( radius );
@@ -107,7 +108,7 @@ function animate() {
   if ( gem.position.distanceTo( player.position ) < 2 * gemRadius ) {
     console.log("gem collision");
     score += 100;
-    console.log(gon.score);
+    console.log(score);
     gem.position.set( range / 2 - range * Math.random(),
                        range / 2 - range * Math.random(),
                        0.0);

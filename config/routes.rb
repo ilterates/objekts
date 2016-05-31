@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "score#index"
+  root "user#index"
 
-  get "/textures", to: "score#image"
+
 end

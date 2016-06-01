@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     login(@user)
 
-    redirect_to '/'
+    redirect_to @user
   end
 
   private

@@ -100,6 +100,10 @@ function animate() {
         console.log("collision");
         player.position.x = 0;
         player.position.y = 0;
+        score = 0;
+        console.log(score);
+        $("#score").text(score);
+        $("#score").val(score);
         $.ajax({
           method: 'POST',
           url: '/scores',
@@ -113,11 +117,11 @@ function animate() {
     console.log("gem collision");
     score += 1000;
     console.log(score);
+    $("#score").text(score);
+    $("#score").val(score);
     gem.position.set( range / 2 - range * Math.random(),
                       range / 2 - range * Math.random(),
                       0.0);
-    $("#score").text(score);
-    $("#score").val(score);
   }
 }
 animate();

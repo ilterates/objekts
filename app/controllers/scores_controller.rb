@@ -3,7 +3,8 @@ class ScoresController < ApplicationController
 
 
   def index
-
+    @scores = Score.all.limit(20).order('user_score DESC')
+    @users = @scores.find(params[user_id])
   end
   def new
     @score = Score.new

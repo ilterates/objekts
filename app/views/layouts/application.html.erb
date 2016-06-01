@@ -8,13 +8,13 @@
     <div class="bg-inverse p-a-1">
       <% if !current_user %>
         <!-- <li class="menu-text"><%= link_to image_tag("noun_153623_cc.svg", class:"duck"), root_path %></li> -->
-        <li><%= link_to "Sign In", new_session_path %></li>
+        <p><%= link_to "Sign In", new_session_path %></p>
       <% else %>
         <!-- <li class="menu-text"><%= link_to image_tag("noun_153623_cc.svg", class:"duck"), root_path %></li> -->
-        <li><%= link_to "Profile", user_path(current_user) %></li>
-        <li><%= link_to "Logout", logout_path(current_user) %></li>
+        <p><%= link_to "Play", root_path %></p>
+        <p><%= link_to "Profile", user_path(current_user) %></p>
+        <p><%= link_to "Logout", logout_path(current_user) %></p>
       <% end %>
-      <span class="text-muted">Toggleable via the navbar brand.</span>
     </div>
   </div>
   <nav class="navbar navbar-light bg-faded">

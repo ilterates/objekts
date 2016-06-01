@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-    gon.score = 0;
-    p gon.score
+
   end
 
   def show
@@ -18,10 +17,6 @@ class UsersController < ApplicationController
     login(@user)
 
     redirect_to '/'
-  end
-
-  def scores
-
   end
 
   private

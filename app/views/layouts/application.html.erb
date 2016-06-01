@@ -4,12 +4,19 @@
   <title>SpaceGame</title>
 </head>
 <body>
+  <nav class="navbar navbar-fixed-top navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">Macrogravity</a>
+    <p class="score">Score:<p class="score" id="score">0</p></p>
+    <hr>
+  </nav>
 
 <%= yield %>
+
 
 <%= Gon::Base.render_data %>
 <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<!-- <%= yield :javascript_includes %> -->
 <%= csrf_meta_tags %>
 </body>
 </html>

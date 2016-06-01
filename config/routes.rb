@@ -10,4 +10,8 @@ Rails.application.routes.draw do
   get "/logout", to: "sessions#destroy"
   post "/sessions", to: "sessions#create"
 
+  get "/scores/new", to: "scores#new", as: "new_score"
+  get "/scores", to: "scores#index", as: "top_scores"
+  post "/scores", to: "scores#crete"
+
 end

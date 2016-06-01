@@ -1,10 +1,10 @@
 
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap.min
 //= require turbolinks
 //= require three
 //= require_tree .
-
 var scene,player,gem;
 var score = 0;
 var loader = new THREE.ImageLoader();
@@ -101,6 +101,11 @@ function animate() {
       collider[i].rotation.z += 0.01;
       if ( collider[i].position.distanceTo( player.position )  < 2 * enemyRadius ) {
         console.log("collision");
+        // $.ajax({
+        //   method: 'POST',
+        //   url: '/user/score',
+        //   data: $("score").val(),
+        // });
       }
     }
 }
@@ -110,8 +115,10 @@ function animate() {
     score += 100;
     console.log(score);
     gem.position.set( range / 2 - range * Math.random(),
-                       range / 2 - range * Math.random(),
-                       0.0);
+                      range / 2 - range * Math.random(),
+                      0.0);
+    $("#score").text(score);
+    $("#score").val(score);
   }
 }
 animate();

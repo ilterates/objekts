@@ -3,9 +3,7 @@ class ScoresController < ApplicationController
 
 
   def index
-    # @users = User.all
     @top_scores = Score.all.limit(20).order('user_score DESC')
-    # @users = @scores.user_id
   end
   def new
     @score = Score.new

@@ -1,5 +1,18 @@
 
 
-<%= @user.username %>
+Welcome <%= @user.username %>
 
 <%= link_to "Play!", root_path %>
+
+
+<div class="personal-scores">
+  <% @scores.each do  |z|%>
+  <div class="personal-scores-box">
+    <%= z.user_score %>
+  </div>
+  <div class="personal-scores-box">
+    <%= z.created_at %>
+  </div>
+    <br>
+  <% end %>
+</div>

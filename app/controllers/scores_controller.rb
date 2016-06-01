@@ -11,12 +11,10 @@ class ScoresController < ApplicationController
   end
   def create
     @user = current_user
-    puts params[:user_score]
     score_params = params.permit(:user_score)
     @score = Score.new(score_params)
     @score.save
-    @user.score << @score
+    @user.scores << @score
     render :nothing => true
-
   end
 end

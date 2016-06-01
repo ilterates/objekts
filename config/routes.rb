@@ -12,6 +12,6 @@ Rails.application.routes.draw do
 
   get "/scores/new", to: "scores#new", as: "new_score"
   get "/scores", to: "scores#index", as: "top_scores"
-  post "/scores", to: "scores#crete"
+  post "/scores", to: "scores#create"
 
 end

@@ -98,18 +98,18 @@ function animate() {
       collider[i].rotation.z += 0.01;
       if ( collider[i].position.distanceTo( player.position )  < 2 * enemyRadius ) {
         console.log("collision");
-        // $.ajax({
-        //   method: 'POST',
-        //   url: '/user/score',
-        //   data: $("score").val(),
-        // });
+        $.ajax({
+          method: 'POST',
+          url: '/scores',
+          data:  { user_score: $("#score").val() } 
+        });
       }
     }
 }
 	renderer.render(scene, camera);
   if ( gem.position.distanceTo( player.position ) < 2 * gemRadius ) {
     console.log("gem collision");
-    score += 100;
+    score += 1000;
     console.log(score);
     gem.position.set( range / 2 - range * Math.random(),
                       range / 2 - range * Math.random(),

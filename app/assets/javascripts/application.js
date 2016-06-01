@@ -65,16 +65,13 @@ $( window ).keydown(function( e ) {
   var playerSpeed = 0.5;
   if ( e.which == 38 ) {
    player.position.y += playerSpeed;
-   console.log("up");
  } else if ( e.which == 37 ) {
    player.position.x -= playerSpeed;
-   console.log("left");
  } else if ( e.which == 39 ) {
    player.position.x += playerSpeed;
-   console.log("right?");
  } else if ( e.which == 40 ) {
    player.position.y -= playerSpeed;
-   console.log("down?");
+
  }
  // if player leaves inner space, game will teleport player to center.
  if ( player.position.y == -6  ||

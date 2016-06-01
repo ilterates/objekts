@@ -11,7 +11,7 @@ var loader = new THREE.ImageLoader();
 var pic = $('#img');
 var collider = [];
 var range = 20;
-var enemyRadius = 0.2;
+var enemyRadius = 0.5;
 var gemRadius = 0.2;
 var radius = 0.5;
 var enemyCount = 15;
@@ -52,7 +52,7 @@ var enemy = new THREE.Mesh( enemyGeometry, material );
 }
 
   // ADDING PLAYER
-player = new THREE.Mesh( enemyGeometry, new THREE.MeshBasicMaterial( { color: 0xFFFFFF, wireframe: true } ) );
+player = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial( { color: 0xFFFFFF, wireframe: true } ) );
 scene.add( player );
 
 gem = new THREE.Mesh ( gemGeometry, new THREE.MeshBasicMaterial ( { color: 0x00ff00, wireframe: false } ) );
@@ -98,10 +98,12 @@ function animate() {
       collider[i].rotation.z += 0.01;
       if ( collider[i].position.distanceTo( player.position )  < 2 * enemyRadius ) {
         console.log("collision");
+        player.position.x = 0;
+        player.position.y = 0;
         $.ajax({
           method: 'POST',
           url: '/scores',
-          data:  { user_score: $("#score").val() } 
+          data:  { user_score: $("#score").val() }
         });
       }
     }

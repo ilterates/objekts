@@ -56,7 +56,7 @@ var enemy = new THREE.Mesh( enemyGeometry, material );
 player = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial ( { color: 0xFFFFFF, wireframe: true } ) );
 scene.add( player );
 
-gem = new THREE.Mesh ( gemGeometry, new THREE.MeshBasicMaterial ( { color: 0x00ff00, wireframe: false } ) );
+gem = new THREE.Mesh ( gemGeometry, new THREE.MeshBasicMaterial ( { color: 0x00ff00, wireframe: true } ) );
 gem.position.set( range / 2 - range * Math.random(),
                    range / 2 - range * Math.random(),
                    0.0);

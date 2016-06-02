@@ -1,10 +1,10 @@
 <div class="top-scores">
-  <h1> SCORES </h1>
+  <h2> Top Scores </h2> <br>
   <% @top_scores.each do |s| %>
     <div class="top-scores-box">
       <%= s.user.username %> &thinsp; &thinsp; &thinsp; &thinsp; &thinsp;
       <%= s.user_score %>
-      <br> <br>
+      <hr>
     </div>
 
   <% end %>

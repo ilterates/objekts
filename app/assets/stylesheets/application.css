@@ -7,11 +7,11 @@
    margin: 0;
    overflow: hidden;
    background-color: white;
-   color: red;
+   color: #8e44ad;
  }
 
  a {
-   color: red;
+   color: #8e44ad;
  }
  canvas {
   width: 100%;
@@ -24,12 +24,12 @@
   border: 0px solid transparent;
 }
 .bg-inverse {
-  background-color: black;
+  background-color: white;
   color: red;
   font-size: 1.5em;
 }
 button {
-  color: red;
+  color: #8e44ad;
   background-color: white;
   border-style: none;
   font-size: 2em;
@@ -37,10 +37,10 @@ button {
 
 .bg-primary{
   background-color: white;
-  color: red;
+  color: #8e44ad;
 }
 .score  {
-  color: red;
+  color: #8e44ad;
   margin-top: 0%;
   text-align: center;
   font-size: 3em;
@@ -54,5 +54,5 @@ button {
   height: 100%auto;
 }
 hr {
-  border-color: red;
+  border-color: #8e44ad;
 }

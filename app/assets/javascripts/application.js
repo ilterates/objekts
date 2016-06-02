@@ -19,6 +19,7 @@ var mouse = new THREE.Vector2();
 var enemyGeometry = new THREE.SphereGeometry( enemyRadius );
 var geometry = new THREE.SphereGeometry( radius );
 var gemGeometry = new THREE.SphereGeometry( gemRadius );
+var time = Date.now();
 
 
 
@@ -52,7 +53,7 @@ var enemy = new THREE.Mesh( enemyGeometry, material );
 }
 
   // ADDING PLAYER
-player = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial( { color: 0xFFFFFF, wireframe: true } ) );
+player = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial ( { color: 0xFFFFFF, wireframe: true } ) );
 scene.add( player );
 
 gem = new THREE.Mesh ( gemGeometry, new THREE.MeshBasicMaterial ( { color: 0x00ff00, wireframe: false } ) );
@@ -98,17 +99,20 @@ function animate() {
       collider[i].rotation.z += 0.01;
       if ( collider[i].position.distanceTo( player.position )  < 2 * enemyRadius ) {
         console.log("collision");
+        if ( (Date.now() - time) > 1000 ) {
+          $.ajax({
+            method: 'POST',
+            url: '/scores',
+            data:  { user_score: $("#score").val() }
+          });
+          time = Date.now();
+        }
         player.position.x = 0;
         player.position.y = 0;
         score = 0;
         console.log(score);
         $("#score").text(score);
         $("#score").val(score);
-        $.ajax({
-          method: 'POST',
-          url: '/scores',
-          data:  { user_score: $("#score").val() }
-        });
       }
     }
 }
@@ -119,9 +123,15 @@ function animate() {
     console.log(score);
     $("#score").text(score);
     $("#score").val(score);
-    gem.position.set( range / 2 - range * Math.random(),
-                      range / 2 - range * Math.random(),
-                      0.0);
+    gem.position.set( 10 / 2 - 10 * Math.random(), 10 / 2 - 10 * Math.random(),  0.0);
+    if ( gem.position.x == -11 ||
+         gem.position.x == 11  ||
+         gem.position.y == - 6 ||
+         gem.position.y == 6    ) {
+           gem.position.x = 1;
+           gem.position.y = 1;
+           console.log("gem was reset due to spawning outside.");
+         }
   }
 }
 animate();

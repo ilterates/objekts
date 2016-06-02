@@ -7,11 +7,9 @@
   <div class="collapse" id="exCollapsingNavbar">
     <div class="bg-inverse p-a-1">
       <% if !current_user %>
-        <!-- <li class="menu-text"><%= link_to image_tag("noun_153623_cc.svg", class:"duck"), root_path %></li> -->
         <p><%= link_to "Sign In", new_session_path %></p>
         <p><%= link_to "Sign Up", new_user_path %>
       <% else %>
-        <!-- <li class="menu-text"><%= link_to image_tag("noun_153623_cc.svg", class:"duck"), root_path %></li> -->
         <p><%= link_to "Play", root_path %></p>
         <p><%= link_to "Top Scores", scores_path %></p>
         <p><%= link_to "Profile", user_path(current_user) %></p>

@@ -26,6 +26,7 @@ var time = Date.now();
   // WebGLRenderer
 
 var renderer = new THREE.WebGLRenderer();
+renderer.setClearColor ( 0xFFFFFF );
 renderer.setSize( window.innerWidth, window.innerHeight );
 var space = document.getElementById( "space" );
 space.appendChild( renderer.domElement );
@@ -53,7 +54,7 @@ var enemy = new THREE.Mesh( enemyGeometry, material );
 }
 
   // ADDING PLAYER
-player = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial ( { color: 0xFFFFFF, wireframe: true } ) );
+player = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial ( { color: 0x000000, wireframe: true } ) );
 scene.add( player );
 
 gem = new THREE.Mesh ( gemGeometry, new THREE.MeshBasicMaterial ( { color: 0x00ff00, wireframe: true } ) );

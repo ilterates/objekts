@@ -6,9 +6,10 @@
  body {
    margin: 0;
    overflow: hidden;
-   background-color: black;
+   background-color: white;
    color: red;
  }
+
  a {
    color: red;
  }
@@ -51,7 +52,6 @@ button {
   cursor: none;
   width: 100%auto;
   height: 100%auto;
-  /*border-style: dashed;*/
 }
 hr {
   border-color: red;

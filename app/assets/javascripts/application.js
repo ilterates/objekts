@@ -5,8 +5,10 @@
 //= require turbolinks
 //= require three
 //= require_tree .
-var scene,player,gem;
+var scene,player,gem,collected;
 var $score = $('#score').val();
+$score = 0;
+collected = 0;
 var score = 0;
 var loader = new THREE.ImageLoader();
 var pic = $('#img');
@@ -101,13 +103,14 @@ function animate() {
       collider[i].rotation.z += 0.01;
       if ( collider[i].position.distanceTo( player.position )  < 2 * enemyRadius ) {
         console.log("collision");
-        if ( ( Date.now() - time ) > 1000  &&  $score !== 0 ) {
+        if ( ( Date.now() - time ) > 1000 && collected >= 1 ) {
           $.ajax({
             method: 'POST',
             url: '/scores',
-            data:  { user_score: $("#score").val() }
+            data:  { user_score: $score }
           });
           time = Date.now();
+          collected = 0;
         }
         player.position.x = 0;
         player.position.y = 0;
@@ -122,6 +125,7 @@ function animate() {
   if ( gem.position.distanceTo( player.position ) < 2 * gemRadius ) {
     console.log("gem collision");
     score += 1000;
+    collected += 1;
     console.log(score);
     $("#score").text(score);
     $("#score").val(score);

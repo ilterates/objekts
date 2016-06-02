@@ -6,6 +6,7 @@
 //= require three
 //= require_tree .
 var scene,player,gem;
+var $score = $('#score').val();
 var score = 0;
 var loader = new THREE.ImageLoader();
 var pic = $('#img');
@@ -100,7 +101,7 @@ function animate() {
       collider[i].rotation.z += 0.01;
       if ( collider[i].position.distanceTo( player.position )  < 2 * enemyRadius ) {
         console.log("collision");
-        if ( (Date.now() - time) > 1000 ) {
+        if ( ( Date.now() - time ) > 1000  &&  $score !== 0 ) {
           $.ajax({
             method: 'POST',
             url: '/scores',

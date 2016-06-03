@@ -5,12 +5,21 @@
   margin: 20% 0 0 20%;
 }
 .personal-scores {
-  margin-top: 20%;
+  margin-top: 0%;
   margin-left: 40%;
   width: 20%;
 }
 .personal-scores-box  {
-  border-style: solid;
-  border-width: thin;
-  border-color: red;
+  font-size: 2em;
+}
+.user-welcome {
+  margin-top: 10%;
+  font-size: 3.5em;
+  margin-left: 5%;
+}
+.play-link {
+  margin-top: 35%;
+  font-size: 4em;
+  float: right;
+  margin-right: 5%;
 }

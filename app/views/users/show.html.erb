@@ -1,8 +1,12 @@
 
+<div class="user-welcome">
+  Welcome <%= @user.username %>
+</div>
 
-Welcome <%= @user.username %>
+<div class="play-link">
+  <%= link_to "Play!", root_path %>
+</div>
 
-<%= link_to "Play!", root_path %>
 
 
 <div class="personal-scores">

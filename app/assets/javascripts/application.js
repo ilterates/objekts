@@ -23,8 +23,9 @@ var geometry = new THREE.SphereGeometry( radius );
 var gemGeometry = new THREE.SphereGeometry( gemRadius );
 var time = Date.now();
 var myAlienFriends = [ pic.context.images[0].src,
-                       pic.context.images[1].src];
-var pic = 0;
+                       pic.context.images[1].src,
+                       pic.context.images[2].src ];
+var picture = 0;
 
 
   // WebGLRenderer
@@ -45,23 +46,28 @@ for ( var i =0; i < enemyCount; i++ ) {
   // ENEMY OBJECT
   var material = new THREE.MeshBasicMaterial({
     color: 0xFFFFFF,
-    map: THREE.ImageUtils.loadTexture(myAlienFriends[pic]),
+    map: THREE.ImageUtils.loadTexture(myAlienFriends[picture]),
     wireframe: false
   });
+// var light = new THREE.PointLight( 0x000000, 1 );
+// camera.add( light );
 var enemy = new THREE.Mesh( enemyGeometry, material );
   enemy.position.set( range / 2 - range * Math.random(),
                      range / 2 - range * Math.random(),
                      0.0);
   scene.add( enemy );
-  pic += 1;
-  if ( pic == 2) {
-    pic = 0;
+  picture += 1;
+  if ( picture == 3) {
+    picture = 0;
   }
   collider.push( enemy );
 }
 
   // ADDING PLAYER
-player = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial ( { color: 0x000000, wireframe: true } ) );
+player = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial ({
+    color: 0x000000,
+    wireframe: true
+} ) );
 scene.add( player );
 
 gem = new THREE.Mesh ( gemGeometry, new THREE.MeshBasicMaterial ( { color: 0x8e44ad, wireframe: true } ) );
@@ -83,10 +89,10 @@ $( window ).keydown(function( e ) {
 
  }
  // if player leaves inner space, game will teleport player to center.
- if ( player.position.y == -5.5  ||
-      player.position.y ==  5.7  ||
-      player.position.x == -11 ||
-      player.position.x ==  11 ) {
+ if ( player.position.y >= 5.7 ||
+      player.position.y <= -4.7||
+      player.position.x <= -11 ||
+      player.position.x >=  11 ) {
         player.position.y = 0;
         player.position.x = 0;
         console.log("outside");
@@ -124,10 +130,10 @@ function animate() {
         $("#score").val(score);
       }
     }
-    if ( gem.position.x <= -11 ||
-         gem.position.x >= 11  ||
-         gem.position.y <= -6  ||
-         gem.position.y >= 6 ) {
+    if ( gem.position.x <= -8.5 ||
+         gem.position.x >= 8.4  ||
+         gem.position.y <= -4.6  ||
+         gem.position.y >= 5.7 ) {
            gem.position.x = 0;
            gem.position.y = 0;
         console.log("gem was reset due to spawning outside.");

@@ -132,10 +132,10 @@ function animate() {
     }
     if ( gem.position.x <= -8.5 ||
          gem.position.x >= 8.4  ||
-         gem.position.y <= -4.6  ||
+         gem.position.y <= -4.6 ||
          gem.position.y >= 5.7 ) {
-           gem.position.x = 0;
-           gem.position.y = 0;
+           gem.position.x = 3;
+           gem.position.y = 3;
         console.log("gem was reset due to spawning outside.");
       }
 }
@@ -151,3 +151,8 @@ function animate() {
   }
 }
 animate();
+if(window.location.toString().contains("users") >= 0){
+  $("#score").val("");
+  $("#score").text("");
+  console.log("users path");
+}

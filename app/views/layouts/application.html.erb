@@ -4,23 +4,21 @@
   <title>SpaceGame</title>
 </head>
 <body>
-  <div class="collapse" id="exCollapsingNavbar">
-    <div class="bg-inverse p-a-1">
+  <nav class="mynav">
+    <div>
       <% if !current_user %>
-        <p><%= link_to "Sign In", new_session_path %></p>
-        <p><%= link_to "Sign Up", new_user_path %>
+        <a><%= link_to "Sign In", new_session_path %></a>
+        <a><%= link_to "Sign Up", new_user_path %></a>
       <% else %>
-        <p><%= link_to "Play", root_path %></p>
-        <p><%= link_to "Top Scores", scores_path %></p>
-        <p><%= link_to "Profile", user_path(current_user) %></p>
-        <p><%= link_to "Logout", logout_path(current_user) %></p>
+        <div class="menu">
+          <a><%= link_to "Play", root_path %></a> &nbsp;
+          <a><%= link_to "Top Scores", scores_path, { class: "top-scores-nav" } %></a>
+          <a><%= link_to "Profile", user_path(current_user), { class: "top-scores-profile" } %></a> &nbsp;
+          <a><%= link_to "Logout", logout_path(current_user) %></a>
+        </div>
+          <div class="<%= @score_show ? 'score' : 'hidden-score' %>"><p id="score">0000</p></div>
       <% end %>
     </div>
-  </div>
-  <nav class="navbar navbar-light bg-faded">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
-      &#9776;
-    </button>
   </nav>
   <div class="flash">
     <% flash.each do |name, msg| %>

@@ -10,13 +10,13 @@
 
 
 <div class="personal-scores">
-  <h2>Personal Top Scores</h2> <br> <hr>
+  <h2>Personal Top Scores</h2> <br> <hr class="user-hr">
   <% @scores.each do  |z|%>
-  <div class="personal-scores-box">
+  <!-- <div class="personal-scores-score"> -->
     <%= z.user_score %>
-    <%= z.created_at %>
-  <!-- </div>
-  <div class="personal-scores-box"> -->
+  <!-- </div> -->
+  <div class="personal-scores-date">
+    <%= z.created_at.strftime("%m/%d/%Y") %>
   </div>
     <br>
   <% end %>

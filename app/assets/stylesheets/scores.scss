@@ -3,10 +3,22 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .top-scores {
   margin-top: 0%;
-  margin-left: 40%;
-  width: 20%;
-  font-size: 2em;
+  margin-left: 35%;
+  width: 35%;
+  font-size: 1.7em;
+  color: black;
 }
-.top-scores-box {
-  width: 70%;
+.top-scores-name {
+  width: 20%;
+}
+.date {
+  float: right;
+  margin-top: -6%;
+}
+.top-score {
+  margin-left: 50%;
+  margin-top: -6%;
+}
+.scores-hr {
+  border-color: black;
 }

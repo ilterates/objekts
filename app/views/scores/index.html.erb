@@ -1,11 +1,16 @@
 <div class="top-scores">
   <h2> Top Scores </h2> <br>
+  <hr class="scores-hr">
   <% @top_scores.each do |s| %>
-    <div class="top-scores-box">
-      <%= s.user.username %> &thinsp; &thinsp; &thinsp; &thinsp; &thinsp;
-      <%= s.user_score %>
-      <hr>
+    <div class="top-scores-name">
+      <%= s.user.username %>
     </div>
-
+    <div class="top-score">
+      <%= s.user_score %>
+    </div>
+    <div class="date">
+      <small><%= s.created_at.strftime("%m/%d/%Y") %></small>
+    </div>
+    <br>
   <% end %>
 </div>

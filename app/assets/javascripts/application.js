@@ -70,7 +70,7 @@ player = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial ({
 } ) );
 scene.add( player );
 
-gem = new THREE.Mesh ( gemGeometry, new THREE.MeshBasicMaterial ( { color: 0x8e44ad, wireframe: true } ) );
+gem = new THREE.Mesh ( gemGeometry, new THREE.MeshBasicMaterial ( { color: 0x4183D7, wireframe: true } ) );
 gem.position.set( range / 2 - range * Math.random(),
                    range / 2 - range * Math.random(),
                    0.0);
@@ -108,9 +108,9 @@ function animate() {
       collider[i].position.y = 6;
     } else {
       collider[i].position.y -= 0.031;
-      collider[i].rotation.x += 100;
-      collider[i].rotation.y += 100;
-      collider[i].rotation.z += 100;
+      collider[i].rotation.x += 1000;
+      collider[i].rotation.y += 1000;
+      collider[i].rotation.z += 1000;
       if ( collider[i].position.distanceTo( player.position )  < 2 * enemyRadius && score !== 0 ) {
         console.log("collision");
         if ( ( Date.now() - time ) > 1000 && collected >= 1 ) {
@@ -151,8 +151,5 @@ function animate() {
   }
 }
 animate();
-if(window.location.toString().contains("users") >= 0){
-  $("#score").val("");
-  $("#score").text("");
-  console.log("users path");
-}
+
+/// WECOME Sphere

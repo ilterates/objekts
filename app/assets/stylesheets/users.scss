@@ -3,6 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .signup-form {
   margin: 20% 0 0 20%;
+  width: 25%;
+  font-size: 3em;
 }
 .personal-scores {
   margin-top: 0%;
@@ -37,4 +39,8 @@
 .play-link a {
   color: white;
   text-decoration: none;
+}
+.welcome-sphere {
+  margin-left: 50%;
+  margin-top: -20%;
 }

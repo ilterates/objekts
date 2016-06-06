@@ -22,9 +22,9 @@ var enemyGeometry = new THREE.CubeGeometry( 1, 1, 1 );
 var geometry = new THREE.SphereGeometry( radius );
 var gemGeometry = new THREE.SphereGeometry( gemRadius );
 var time = Date.now();
-var myAlienFriends = [ pic.context.images[0].src,
-                       pic.context.images[1].src,
-                       pic.context.images[2].src ];
+// var myAlienFriends = [ pic.context.images[0].src,
+                      //  pic.context.images[1].src,
+                      //  pic.context.images[2].src ];
 var picture = 0;
 
 
@@ -45,9 +45,9 @@ scene = new THREE.Scene();
 for ( var i =0; i < enemyCount; i++ ) {
   // ENEMY OBJECT
   var material = new THREE.MeshBasicMaterial({
-    color: 0xFFFFFF,
-    map: THREE.ImageUtils.loadTexture(myAlienFriends[picture]),
-    wireframe: false
+    color: 0x3D40A2 * Math.random(),
+    // map: THREE.ImageUtils.loadTexture(myAlienFriends[picture]),
+    wireframe: true
   });
 // var light = new THREE.PointLight( 0x000000, 1 );
 // camera.add( light );
@@ -108,9 +108,9 @@ function animate() {
       collider[i].position.y = 6;
     } else {
       collider[i].position.y -= 0.031;
-      collider[i].rotation.x += 1000;
-      collider[i].rotation.y += 1000;
-      collider[i].rotation.z += 1000;
+      collider[i].rotation.x += 0.001;
+      collider[i].rotation.y += 0.001;
+      collider[i].rotation.z += 0.001;
       if ( collider[i].position.distanceTo( player.position )  < 2 * enemyRadius && score !== 0 ) {
         console.log("collision");
         if ( ( Date.now() - time ) > 1000 && collected >= 1 ) {
@@ -147,7 +147,7 @@ function animate() {
     console.log(score);
     $("#score").text(score);
     $("#score").val(score);
-    gem.position.set( 5 / 2 - 10 * Math.random(), 5 / 2 - 10 * Math.random(),  0.0);
+    gem.position.set( 1 / 2 - 2 * Math.random(), 1 / 2 - 2 * Math.random(),  0.0);
   }
 }
 animate();

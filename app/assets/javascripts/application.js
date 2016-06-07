@@ -108,9 +108,9 @@ function animate() {
       collider[i].position.y = 6;
     } else {
       collider[i].position.y -= 0.031;
-      collider[i].rotation.x += 0.001;
-      collider[i].rotation.y += 0.001;
-      collider[i].rotation.z += 0.001;
+      collider[i].rotation.x += 0.005;
+      collider[i].rotation.y += 0.005;
+      collider[i].rotation.z += 0.005;
       if ( collider[i].position.distanceTo( player.position )  < 2 * enemyRadius && score !== 0 ) {
         console.log("collision");
         if ( ( Date.now() - time ) > 1000 && collected >= 1 ) {

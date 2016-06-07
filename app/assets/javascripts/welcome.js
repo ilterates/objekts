@@ -21,9 +21,9 @@
   function render () {
 
     requestAnimationFrame( render );
-    wObject.rotation.x += 0.05;
-    wObject.rotation.y += 0.05;
-    wObject.position.z += 0.05;
+    wObject.rotation.x += 0.01;
+    wObject.rotation.y += 0.01;
+    wObject.position.z += 0.01;
     if (wObject.position.z >= 1 ) {
       wObject.position.z = -5;
     }

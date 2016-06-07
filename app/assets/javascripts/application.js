@@ -65,7 +65,7 @@ var enemy = new THREE.Mesh( enemyGeometry, material );
 
   // ADDING PLAYER
 player = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial ({
-    color: 0x000000,
+    color: 0x000000 * Math.random(),
     wireframe: true
 } ) );
 scene.add( player );

@@ -1,20 +1,23 @@
 
-  var wscene = new THREE.Scene();
-  var wcamera = new THREE.PerspectiveCamera( 75, 400 / 400, 0.1, 1000 );
-  wcamera.position.z = 1;
+  var wScene = new THREE.Scene();
+  var wCamera = new THREE.PerspectiveCamera( 75, 400 / 400, 0.1, 1000 );
+  wCamera.position.z = 1;
 
-  var wrenderer = new THREE.WebGLRenderer();
-  wrenderer.setClearColor ( 0xFFFFFF );
-  wrenderer.setSize( 400, 400 );
-  var welcome = document.getElementById( "welcome-sphere" );
-  document.body.appendChild( welcome );
-  welcome.appendChild( wrenderer.domElement );
-  var wgeometry = new THREE.SphereGeometry( 0.5 );
-  wObject = new THREE.Mesh( wgeometry, new THREE.MeshBasicMaterial ({
+  var wRenderer = new THREE.WebGLRenderer();
+  wRenderer.setClearColor ( 0xFFFFFF );
+  wRenderer.setSize( 400, 400 );
+    if ( document.getElementById( "welcome-sphere" ) ) {
+      var welcome = document.getElementById( "welcome-sphere" );
+      document.body.appendChild( welcome );
+      welcome.appendChild( wRenderer.domElement );
+    }
+
+  var wGeometry = new THREE.SphereGeometry( 0.5 );
+  wObject = new THREE.Mesh( wGeometry, new THREE.MeshBasicMaterial ({
     color: Math.random() * 0xFFFFFF,
     wireframe: true
   } ) );
-  wscene.add ( wObject );
+  wScene.add ( wObject );
   function render () {
 
     requestAnimationFrame( render );
@@ -25,6 +28,6 @@
       wObject.position.z = -5;
     }
 
-    wrenderer.render( wscene, wcamera );
+    wRenderer.render( wScene, wCamera );
   }
   render();

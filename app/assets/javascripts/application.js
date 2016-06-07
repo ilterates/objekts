@@ -12,7 +12,7 @@ var score = 0;
 var loader = new THREE.ImageLoader();
 var pic = $('#img');
 var collider = [];
-var range = 20;
+var range = 10;
 var enemyRadius = 0.5;
 var gemRadius = 0.2;
 var radius = 0.4;
@@ -147,7 +147,7 @@ function animate() {
     console.log(score);
     $("#score").text(score);
     $("#score").val(score);
-    gem.position.set( 1 / 2 - 2 * Math.random(), 1 / 2 - 2 * Math.random(),  0.0);
+    gem.position.set( range / 2 - range * Math.random(), range / 2 - range * Math.random(),  0.0);
   }
 }
 animate();

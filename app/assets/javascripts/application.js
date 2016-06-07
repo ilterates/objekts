@@ -12,7 +12,8 @@ var score = 0;
 var loader = new THREE.ImageLoader();
 var pic = $('#img');
 var collider = [];
-var range = 10;
+var gemRange = 10;
+var enemyRange = 20;
 var enemyRadius = 0.5;
 var gemRadius = 0.2;
 var radius = 0.4;
@@ -52,8 +53,8 @@ for ( var i =0; i < enemyCount; i++ ) {
 // var light = new THREE.PointLight( 0x000000, 1 );
 // camera.add( light );
 var enemy = new THREE.Mesh( enemyGeometry, material );
-  enemy.position.set( range / 2 - range * Math.random(),
-                     range / 2 - range * Math.random(),
+  enemy.position.set( enemyRange / 2 - enemyRange * Math.random(),
+                     enemyRange / 2 - enemyRange * Math.random(),
                      0.0);
   scene.add( enemy );
   picture += 1;
@@ -71,8 +72,8 @@ player = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial ({
 scene.add( player );
 
 gem = new THREE.Mesh ( gemGeometry, new THREE.MeshBasicMaterial ( { color: 0x4183D7, wireframe: true } ) );
-gem.position.set( range / 2 - range * Math.random(),
-                   range / 2 - range * Math.random(),
+gem.position.set( gemRange / 2 - gemRange * Math.random(),
+                  gemRange / 2 - gemRange * Math.random(),
                    0.0);
 scene.add ( gem );
 
@@ -147,7 +148,8 @@ function animate() {
     console.log(score);
     $("#score").text(score);
     $("#score").val(score);
-    gem.position.set( range / 2 - range * Math.random(), range / 2 - range * Math.random(),  0.0);
+    gem.position.set( gemRange / 2 - gemRange * Math.random(),
+                      gemRange / 2 - gemRange * Math.random(),  0.0);
   }
 }
 animate();

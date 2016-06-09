@@ -16,11 +16,4 @@ ActiveRecord::Schema.define(version: 20160609201435) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "scores", force: :cascade do |t|
-    t.integer   "top_score"
-    t.username  "username"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
 end

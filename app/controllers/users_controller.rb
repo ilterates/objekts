@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
- before_action :logged_in?, except: [:new, :create]
+ # before_action :logged_in?, except: [:new, :create]
 
   def index
     @score_show = true;
@@ -13,20 +13,19 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
-    @score_show = false
+    # @user = User.new
+    # @score_show = false
   end
   def create
-
-    @user = User.create(user_params)
-    login(@user)
-
-    redirect_to @user
+    # @user = User.create(user_params)
+    # login(@user)
+    #
+    # redirect_to @user
   end
 
-  private
-
-  def user_params
-    params.require(:user).permit(:username, :password)
-  end
+  # private
+  #
+  # def user_params
+  #   params.require(:user).permit(:username, :password)
+  # end
 end

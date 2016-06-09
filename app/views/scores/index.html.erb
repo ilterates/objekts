@@ -3,9 +3,8 @@
   <hr class="scores-hr">
   <% @top_scores.each do |s| %>
     <div class="top-scores-name">
-      <%= s.user.username %>
+      <%= s.username %>
     </div>
-<<<<<<< Updated upstream
     <div class="top-score">
       <%= s.user_score %>
     </div>
@@ -13,7 +12,6 @@
       <small><%= s.created_at.strftime("%m/%d/%Y") %></small>
     </div>
     <br>
-=======
     <div class="top-scores-score">
       <%= s.user_score %>
     </div>
@@ -21,6 +19,5 @@
       <%= s.created_at.strftime("%m/%d/%Y") %>
     </div>
       <hr class="scores-hr">
->>>>>>> Stashed changes
   <% end %>
 </div>

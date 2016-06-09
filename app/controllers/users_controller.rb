@@ -7,9 +7,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by_id(params[:id])
-    @scores = @user.scores.limit(10).order('user_score DESC')
-    @score_show = false
+    # @user = User.find_by_id(params[:id])
+    # # @scores = @user.scores.limit(10).order('user_score DESC')
+    # @score_show = false
   end
 
   def new

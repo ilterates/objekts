@@ -118,7 +118,7 @@ function animate() {
           $.ajax({
             method: 'POST',
             url: '/scores',
-            data:  { user_score: $('#score').val() }
+            data:  { top_score: $('#score').val() }
           });
           time = Date.now();
           collected = 0;

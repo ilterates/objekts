@@ -9,7 +9,7 @@ class ScoresController < ApplicationController
 
   end
   def create
-    @user = current_user
+    # @user = current_user
     score_params = params.permit(:user_score)
     @score = Score.new(score_params)
     @score.save

@@ -1,7 +1,5 @@
 class ScoresController < ApplicationController
 
-
-
   def index
     @top_scores = Score.all.limit(20).order('user_score DESC')
     @score_show = false;

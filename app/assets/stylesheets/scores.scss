@@ -4,6 +4,7 @@
 .top-scores {
   margin-top: 0%;
   margin-left: 35%;
+<<<<<<< Updated upstream
   width: 35%;
   font-size: 1.7em;
   color: black;
@@ -21,4 +22,26 @@
 }
 .scores-hr {
   border-color: black;
+=======
+  width: 50%;
+  color: black;
+  font-size: 1.7em;
+}
+.top-scores-name {
+  float: left;
+  width: 10%;
+}
+.top-scores-score {
+  margin-left: 10%;
+  float: right;
+}
+.scores-hr {
+  border-color: black;
+}
+.top-score {
+  text-align: right;
+}
+.top-scores-date {
+  float: right;
+>>>>>>> Stashed changes
 }

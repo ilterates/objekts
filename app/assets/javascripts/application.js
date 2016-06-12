@@ -114,11 +114,16 @@ function animate() {
       collider[i].rotation.z += 0.005;
       if ( collider[i].position.distanceTo( player.position )  < 2 * enemyRadius && score !== 0 ) {
         console.log("collision");
+        var $current_score = $('#score').val();
         if ( ( Date.now() - time ) > 1000 && collected >= 1 ) {
+          $.ajax({
+            method: 'GET',
+            url: '/scores'
+          });
           $.ajax({
             method: 'POST',
             url: '/scores',
-            data:  { top_score: $('#score').val() }
+            data:  { top_score: $current_score }
           });
           time = Date.now();
           collected = 0;

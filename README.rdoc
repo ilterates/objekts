@@ -1,8 +1,8 @@
-== Objekts
+## Objekts
 
 
 
-* To-do
+#### To-do
 - Design score page
 - Work on randomizing enemies.
 - Work on randomizing enemy colors ( skin if possible )

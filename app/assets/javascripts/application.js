@@ -18,7 +18,7 @@ var gemRadius = 0.2;
 var radius = 0.4;
 var enemyCount = 15;
 var mouse = new THREE.Vector2();
-var enemyGeometry = new THREE.CubeGeometry( 1, 1, 1 );
+var enemyGeometry = new THREE.CubeGeometry( 0.7, 0.7, 0.7 );
 var geometry = new THREE.SphereGeometry( radius );
 var gemGeometry = new THREE.SphereGeometry( gemRadius );
 var time = Date.now();
@@ -38,7 +38,7 @@ space.appendChild( renderer.domElement );
 
  // CAMERA
 var camera = new THREE.PerspectiveCamera( 60, window.innerWidth/window.innerHeight, 0.1, 1000 );
-camera.position.z = 10;
+camera.position.z = 10; // sets distance
 scene = new THREE.Scene();
 
 // ENEMIES
@@ -46,7 +46,7 @@ for ( var i =0; i < enemyCount; i++ ) {
   // ENEMY OBJECT
   var material = new THREE.MeshBasicMaterial({
     color: 0x3D40A2 * Math.random(),
-    // map: THREE.ImageUtils.loadTexture(myAlienFriends[picture]),
+    // map: THREE.ImageUtils.loadTexture(myAlienFriends[picture]), // friend pictures as a joke.
     wireframe: true
   });
 // var light = new THREE.PointLight( 0x000000, 1 );
@@ -93,9 +93,9 @@ $( window ).keydown(function( e ) {
       player.position.y <= -4.7||
       player.position.x <= -11 ||
       player.position.x >=  11 ) {
-        player.position.y = 0;
-        player.position.x = 0;
-        console.log("outside");
+      player.position.y = 0;
+      player.position.x = 0;
+      console.log("outside");
       }
 
 });
@@ -113,7 +113,7 @@ function animate() {
       collider[i].rotation.z += 0.005;
       if ( collider[i].position.distanceTo( player.position )  < 2 * enemyRadius && score !== 0 ) {
         console.log("collision");
-        if ( ( Date.now() - time ) > 1000 && collected >= 1 ) {
+        if ( ( Date.now() - time ) > 1000 && collected >= 1 ) {  // same idea as setTimeout. Reinventing the wheel
           $.ajax({
             method: 'POST',
             url: '/scores',
@@ -134,8 +134,8 @@ function animate() {
          gem.position.x >= 8.4  ||
          gem.position.y <= -4.6 ||
          gem.position.y >= 5.7 ) {
-           gem.position.x = 3;
-           gem.position.y = 3;
+         gem.position.x = 3;
+         gem.position.y = 3;
         console.log("gem was reset due to spawning outside.");
       }
 }
